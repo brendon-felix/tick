@@ -1,0 +1,19 @@
+[package]
+name = "tick"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+tokio = { version = "1.0", features = ["full"] }
+reqwest = { version = "0.11", features = ["json"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+chrono = { version = "0.4", features = ["serde"] }
+base64 = "0.21"
+url = "2.4"
+anyhow = "1.0"
+dotenv = "0.15"
+warp = "0.3"
+toml = "0.8"
+dirs = "5.0"
+dtparse = "2.0"
