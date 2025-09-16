@@ -10,7 +10,7 @@ mod types;
 use auth::{interactive_auth, perform_oauth_flow};
 use client::TickTickClient;
 use config::Config;
-use display::print_task;
+use display::print_tasks_grouped;
 
 #[tokio::main]
 async fn main() -> Result<()> {
@@ -106,18 +106,7 @@ async fn main() -> Result<()> {
                 let project_map: std::collections::HashMap<String, String> =
                     projects.into_iter().map(|p| (p.id, p.name)).collect();
 
-                for task in &tasks {
-                    let project_name = if task.project_id.starts_with("inbox") {
-                        "📥 Inbox"
-                    } else {
-                        project_map
-                            .get(&task.project_id)
-                            .map(|s| s.as_str())
-                            .unwrap_or("Unknown Project")
-                    };
-                    print_task(task, project_name);
-                    println!();
-                }
+                print_tasks_grouped(&tasks, &project_map);
             }
         }
         Err(e) => {
