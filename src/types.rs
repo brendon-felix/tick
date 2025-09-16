@@ -74,3 +74,9 @@ pub struct ProjectData {
     pub tasks: Vec<Task>,
     pub columns: Option<Vec<serde_json::Value>>,
 }
+
+#[derive(Debug, Deserialize, Serialize)]
+pub struct InboxData {
+    pub tasks: Vec<Task>,
+    pub columns: Option<Vec<serde_json::Value>>,
+}
